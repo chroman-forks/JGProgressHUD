@@ -18,6 +18,7 @@
     if (self) {
         if (style != JGProgressHUDStyleDark) {
             self.color = [UIColor blackColor];
+            [self tintColorDidChange];
         }
     }
     
@@ -26,6 +27,12 @@
 
 - (instancetype)init {
     return [self initWithHUDStyle:0];
+}
+
+- (void)tintColorDidChange
+{
+    [super tintColorDidChange];
+    self.color = self.tintColor;
 }
 
 - (void)setColor:(UIColor *)color {

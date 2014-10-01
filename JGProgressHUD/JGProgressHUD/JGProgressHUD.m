@@ -605,6 +605,8 @@ static CGRect keyboardFrame = (CGRect){{0.0f, 0.0f}, {0.0f, 0.0f}};
         [_textLabel addObserver:self forKeyPath:@"font" options:(NSKeyValueObservingOptions)kNilOptions context:NULL];
         
         [self.contentView addSubview:_textLabel];
+        
+        [self tintColorDidChange];
     }
     
     return _textLabel;
@@ -622,6 +624,8 @@ static CGRect keyboardFrame = (CGRect){{0.0f, 0.0f}, {0.0f, 0.0f}};
         [_detailTextLabel addObserver:self forKeyPath:@"font" options:(NSKeyValueObservingOptions)kNilOptions context:NULL];
         
         [self.contentView addSubview:_detailTextLabel];
+        
+        [self tintColorDidChange];
     }
     
     return _detailTextLabel;
@@ -733,6 +737,15 @@ static CGRect keyboardFrame = (CGRect){{0.0f, 0.0f}, {0.0f, 0.0f}};
 }
 
 #pragma mark - Overrides
+
+- (void)tintColorDidChange {
+    [super tintColorDidChange];
+    /*
+    UIColor *tintColor = self.tintColor;
+    self.textLabel.textColor = tintColor;
+    self.detailTextLabel.textColor = tintColor;
+     */
+}
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     if (self.interactionType == JGProgressHUDInteractionTypeBlockNoTouches) {

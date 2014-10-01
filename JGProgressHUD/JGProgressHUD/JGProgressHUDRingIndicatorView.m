@@ -105,6 +105,8 @@
                 self.ringBackgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
             }
         }
+        
+        [self tintColorDidChange];
     }
     
     return self;
@@ -120,6 +122,8 @@
         self.ringColor = [UIColor whiteColor];
         self.ringBackgroundColor = [UIColor blackColor];
         self.ringWidth = 3.0f;
+        
+        [self tintColorDidChange];
     }
     
     return self;
@@ -181,6 +185,12 @@
 }
 
 #pragma mark - Overrides
+
+- (void)tintColorDidChange {
+    [super tintColorDidChange];
+    UIColor *tintColor = self.tintColor;
+    self.ringColor = tintColor;
+}
 
 + (Class)layerClass {
     return [JGProgressHUDRingIndicatorLayer class];

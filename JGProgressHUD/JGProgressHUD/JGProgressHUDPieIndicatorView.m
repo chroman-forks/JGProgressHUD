@@ -108,6 +108,8 @@
                 self.fillColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
             }
         }
+        
+        [self tintColorDidChange];
     }
     
     return self;
@@ -165,6 +167,21 @@
 }
 
 #pragma mark - Overrides
+
+- (void)tintColorDidChange {
+    [super tintColorDidChange];
+    UIColor *tintColor = self.tintColor;
+    self.color = tintColor;
+    /*
+    CGFloat h, s, b, a;
+    if ([tintColor getHue:&h saturation:&s brightness:&b alpha:&a]) {
+        self.fillColor = [UIColor colorWithHue:h
+                          saturation:MAX(s - 0.9, 0.0)
+                          brightness:b
+                               alpha:a];
+    }
+     */
+}
 
 + (Class)layerClass {
     return [JGProgressHUDPieIndicatorLayer class];
